@@ -7,12 +7,12 @@ from ovos_bus_client.message import Message
 bus = MessageBusClient()
 bus.run_in_thread()
 
-# Bus'a bağlanmayı bekle
+# Bus' bağlanma 
 if not bus.connected_event.wait(5):
     print("Bus'a bağlanılamadı!")
     exit(1)
 
-# Hedef skill'e örnek bir utterance gönder
+# Hedef skill'e gönderilecek 
 utterance = "hava durumu İstanbul"
 message = Message(
     "recognizer_loop:utterance",
@@ -23,7 +23,7 @@ message = Message(
 )
 bus.emit(message)
 
-# Skill'in yanıt vermesi için biraz bekle
+# Skill için 3 saniye bekleniyor
 time.sleep(3)
 
 print(f"'{utterance}' komutu gönderildi ve işlenmesi bekleniyor.")
